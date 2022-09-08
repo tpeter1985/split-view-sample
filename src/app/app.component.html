@@ -1,0 +1,49 @@
+<div id="split-view-command-center">
+  <!-- <input type="button" value="Change order" (click)="changeOrder()">
+  <br /> -->
+  <a  [routerLink]="['', { outlets: { a: [] } }]">Area A Empty</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { a: ['input'] } }]">Area A Input</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { a: ['justText'] } }]">Area A Text</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { b: [] } }]">Area B Empty</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { b: ['input'] } }]">Area B Input</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { b: ['justText'] } }]">Area B Text</a>
+
+
+
+
+  <!-- <a  [routerLink]="['', { outlets: { a: ['input'], b: ['input'] } }]">Split-View A Input B Input</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { a: ['input'], b: [] } }]">Single-View A Input</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { a: ['input'], b: [] } }]">Single-View A Text</a>
+  <br />
+  <a  [routerLink]="['', { outlets: { a: ['input'], b: [] } }]">Single-View A</a>
+  <a  [routerLink]="['', { outlets: { a: ['input'] } }]">Single-View A</a> -->
+</div>
+
+
+<div
+  class="flex-container"
+  [class.reverse-order]="!SplitViewOrderedForward">
+  <div
+    id="split-view-area-a"
+    [hidden]="!RouteForSplitViewAreaAGiven"
+    [class.full-width]="RouteForSplitViewAreaAGiven && !SplitActive"
+    [class.half-width]="RouteForSplitViewAreaAGiven && SplitActive">
+    A
+    <router-outlet name="a"></router-outlet>
+  </div>
+  <div
+    id="split-view-area-a"
+    [hidden]="!RouteForSplitViewAreaBGiven"
+    [class.full-width]="RouteForSplitViewAreaBGiven && !SplitActive"
+    [class.half-width]="RouteForSplitViewAreaBGiven && SplitActive">
+    B
+    <router-outlet name="b"></router-outlet>
+  </div>
+</div>

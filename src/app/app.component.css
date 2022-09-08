@@ -1,0 +1,24 @@
+.flex-container {
+    display: flex;
+    background-color: DodgerBlue;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+  }
+
+  .reverse-order {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .half-width {
+    width: 50%;
+  }

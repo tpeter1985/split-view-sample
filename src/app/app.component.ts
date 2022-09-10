@@ -18,4 +18,8 @@ export class AppComponent {
   getRouterLinkInputForActiveArea(route: string | any[]){
     return this.splitViewService.getRouterLinkInputForActiveArea(route);
   }
+
+  routerLinkIsActive(routerLinks: string[]){
+    return this.splitViewService.routerLinkIsActive(routerLinks);
+  }
 }

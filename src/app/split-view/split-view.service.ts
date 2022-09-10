@@ -19,6 +19,7 @@ export class SplitViewService {
   }
 
   private init() {
+    this.router.isActive('Test', {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'});
     this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),
@@ -26,6 +27,7 @@ export class SplitViewService {
         takeUntil(this.destroyed$)
       )
       .subscribe(event => {
+        console.log(event);
         // Store current route
         this.currentRoute = event.url ? event.url : '';
 
@@ -62,11 +64,11 @@ export class SplitViewService {
   }
 
   get AreaAVisible() {
-    return this.currentRoute.includes('a:');
+    return this.currentRoute.includes('(a:') || this.currentRoute.includes('//a:');
   }
 
   get AreaBVisible() {
-    return this.currentRoute.includes('b:');
+    return this.currentRoute.includes('(b:') || this.currentRoute.includes('//b:');
   }
 
   get SplitModeOn() {
@@ -109,19 +111,7 @@ export class SplitViewService {
   }
 
   private getRouterLinkOutlets(route: string | any[]){
-    const activeArea = this.ActiveArea;
-    if (activeArea === 'a'){
-      return {
-        a: route
-      };
-    } else if (activeArea === 'b'){
-      return {
-        b: route
-      }
-    }
-    // No split area currently active?
-    // Return left area route.
-    if (this.OrderedForward){
+    if (this.getAreaToUse() === 'a'){
       return {
         a: route
       };
@@ -129,6 +119,21 @@ export class SplitViewService {
       return {
         b: route
       };
+    }
+  }
+
+  private getAreaToUse(){
+    const activeArea = this.ActiveArea;
+    if (activeArea){
+      return activeArea;
+    }
+
+    // No split area currently active?
+    // Return left area.
+    if (this.OrderedForward){
+      return 'a';
+    } else {
+      return 'b';
     }
   }
 
@@ -159,6 +164,25 @@ export class SplitViewService {
     } else {
       this.router.navigate(['', { outlets: { a: [] } }]);
     }
+  }
+
+  routerLinkIsActive(routerLinks: string[]){
+    if (!routerLinks || !this.router.url){
+      return false;
+    }
+    const loweredUrl = this.router.url.toLowerCase();
+    const areaToUse = this.getAreaToUse();
+    for(let i = 0; i < routerLinks.length; i++){
+      const routerLink = routerLinks[i].toLowerCase();
+      if (
+        loweredUrl.includes(`(${areaToUse}:${routerLink})`)
+        || loweredUrl.includes(`(${areaToUse}:${routerLink}//`)
+        || loweredUrl.includes(`//${areaToUse}:${routerLink})`)
+        || loweredUrl.includes(`//${areaToUse}:${routerLink}//`)){
+        return true;
+      }
+    }
+    return false;
   }
 
   ngOnDestroy() {

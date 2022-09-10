@@ -1,8 +1,27 @@
 <div id="navbar">
-  <a [routerLink]="getRouterLinkInputForActiveArea(['dashboard'])">Dashboard</a>
-  | <a [routerLink]="getRouterLinkInputForActiveArea(['jobs'])">Jobs</a>
-  | <a [routerLink]="getRouterLinkInputForActiveArea(['talentpool'])">Talentpool</a>
-  | <a [routerLink]="getRouterLinkInputForActiveArea(['new-vacancy'])">New Vacancy</a>
+  <a
+    [routerLink]="getRouterLinkInputForActiveArea(['dashboard'])"
+    [class.nav-active]="routerLinkIsActive(['dashboard'])">
+    Dashboard
+  </a>
+  | 
+  <a
+    [routerLink]="getRouterLinkInputForActiveArea(['jobs'])"
+    [class.nav-active]="routerLinkIsActive(['jobs'])">
+    Jobs
+  </a>
+  | 
+  <a
+    [routerLink]="getRouterLinkInputForActiveArea(['talentpool'])"
+    [class.nav-active]="routerLinkIsActive(['talentpool'])">
+    Talentpool
+  </a>
+  | 
+  <a
+    [routerLink]="getRouterLinkInputForActiveArea(['new-vacancy'])"
+    [class.nav-active]="routerLinkIsActive(['new-vacancy'])">
+    New Vacancy
+  </a>
 </div>
 
 <split-view-command-center></split-view-command-center>

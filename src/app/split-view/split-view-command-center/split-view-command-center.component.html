@@ -7,14 +7,19 @@
   </a>
   <span *ngIf="SplitModeOn">
     |
-    <a id="Split-View-1" [class.disabled]="!SplitModeOn" [class.bold]="ActiveSide === 'left' && SplitModeOn"
+    <a id="Split-View-1" [class.bold]="ActiveSide === 'left' && SplitModeOn"
       (click)="activate('left')" href="javascript:void(0)">
       1
     </a>
     |
-    <a id="Split-View-2" [class.disabled]="!SplitModeOn" [class.bold]="ActiveSide === 'right' && SplitModeOn"
+    <a id="Split-View-2" [class.bold]="ActiveSide === 'right' && SplitModeOn"
       (click)="activate('right')" href="javascript:void(0)">
       2
+    </a>
+    |
+    <a id="ChangeOrder" 
+      (click)="changeOrder()" href="javascript:void(0)">
+      &lt; - &gt;
     </a>
   </span>
 </div>

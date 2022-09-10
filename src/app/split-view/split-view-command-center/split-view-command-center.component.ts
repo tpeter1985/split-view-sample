@@ -48,4 +48,8 @@ export class SplitViewCommandCenterComponent implements OnInit {
     this.splitViewService.turnSplitModeOff();
   }
 
+  changeOrder(){
+    this.splitViewService.changeOrder();
+  }
+
 }

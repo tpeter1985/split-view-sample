@@ -1,4 +1,9 @@
 a.disabled {
     pointer-events: none;
     cursor: default;
-  }
+    color:gray;
+}
+
+.bold {
+    font-weight: bold;
+}

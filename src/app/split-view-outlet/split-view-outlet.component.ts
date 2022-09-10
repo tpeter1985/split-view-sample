@@ -16,19 +16,19 @@ export class SplitViewOutletComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get SplitViewOrderedForward() {
+  get OrderedForward() {
     return this.splitViewService.OrderedForward;
   }
 
-  get SplitViewAreaAVisible() {
+  get AreaAVisible() {
     return this.splitViewService.AreaAVisible;
   }
 
-  get SplitViewAreaBVisible() {
+  get AreaBVisible() {
     return this.splitViewService.AreaBVisible;
   }
 
-  get SplitViewSplitModeOn() {
+  get SplitModeOn() {
     return this.splitViewService.SplitModeOn;
   }
 

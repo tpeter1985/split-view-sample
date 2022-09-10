@@ -1,20 +1,20 @@
 <div id="split-view-command-center">
-    <a id="Split-Mode-On"
-      [hidden]="SplitViewSplitModeOn">
-      Split mode on
-    </a>
-    <a id="Split-Mode-Off"
-      [hidden]="!SplitViewSplitModeOn">
-      Split mode off
-    </a>
+  <a id="Split-Mode-On" [hidden]="SplitModeOn" (click)="turnSplitModeOn()" href="javascript:void(0)">
+    Split mode on
+  </a>
+  <a id="Split-Mode-Off" [hidden]="!SplitModeOn" (click)="turnSplitModeOff()" href="javascript:void(0)">
+    Split mode off
+  </a>
+  <span *ngIf="SplitModeOn">
     | 
-    <a id="Split-View-1"
-      [class.disabled]="!SplitViewSplitModeOn">
+    <a id="Split-View-1" [class.disabled]="!SplitModeOn" [class.bold]="ActiveSide === 'left' && SplitModeOn"
+      (click)="activate('left')" href="javascript:void(0)">
       1
     </a>
-    | 
-    <a id="Split-View-2"
-      [class.disabled]="!SplitViewSplitModeOn">
+    |
+    <a id="Split-View-2" [class.disabled]="!SplitModeOn" [class.bold]="ActiveSide === 'right' && SplitModeOn"
+      (click)="activate('right')" href="javascript:void(0)">
       2
     </a>
-  </div>
+  </span>
+</div>

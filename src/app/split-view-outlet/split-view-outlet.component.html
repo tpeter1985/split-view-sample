@@ -1,22 +1,22 @@
 <div
   class="flex-container"
-  [class.reverse-order]="!SplitViewOrderedForward"
-  [hidden]="!SplitViewAreaAVisible && !SplitViewAreaBVisible"
+  [class.reverse-order]="!OrderedForward"
+  [hidden]="!AreaAVisible && !AreaBVisible"
   >
   <div
     id="split-view-area-a"
-    [hidden]="!SplitViewAreaAVisible"
-    [class.full-width]="SplitViewAreaAVisible && !SplitViewSplitModeOn"
-    [class.half-width]="SplitViewAreaAVisible && SplitViewSplitModeOn">
-    A
+    [hidden]="!AreaAVisible"
+    [class.full-width]="AreaAVisible && !SplitModeOn"
+    [class.half-width]="AreaAVisible && SplitModeOn">
+    
     <router-outlet name="a"></router-outlet>
   </div>
   <div
     id="split-view-area-b"
-    [hidden]="!SplitViewAreaBVisible"
-    [class.full-width]="SplitViewAreaBVisible && !SplitViewSplitModeOn"
-    [class.half-width]="SplitViewAreaBVisible && SplitViewSplitModeOn">
-    B
+    [hidden]="!AreaBVisible"
+    [class.full-width]="AreaBVisible && !SplitModeOn"
+    [class.half-width]="AreaBVisible && SplitModeOn">
+    
     <router-outlet name="b"></router-outlet>
   </div>
 </div>

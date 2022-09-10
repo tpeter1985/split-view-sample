@@ -16,20 +16,36 @@ export class SplitViewCommandCenterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get SplitViewOrderedForward() {
+  get OrderedForward() {
     return this.splitViewService.OrderedForward;
   }
 
-  get SplitViewAreaAVisible() {
+  get AreaAVisible() {
     return this.splitViewService.AreaAVisible;
   }
 
-  get SplitViewAreaBVisible() {
+  get AreaBVisible() {
     return this.splitViewService.AreaBVisible;
   }
 
-  get SplitViewSplitModeOn() {
+  get SplitModeOn() {
     return this.splitViewService.SplitModeOn;
+  }
+
+  get ActiveSide() {
+    return this.splitViewService.ActiveSide;
+  }
+
+  activate(side: 'left' | 'right'){
+    this.splitViewService.activate(side);
+  }
+
+  turnSplitModeOn(){
+    this.splitViewService.turnSplitModeOn();
+  }
+
+  turnSplitModeOff(){
+    this.splitViewService.turnSplitModeOff();
   }
 
 }

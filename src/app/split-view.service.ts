@@ -133,6 +133,35 @@ export class SplitViewService {
     }
   }
 
+  activate(side: 'left' | 'right'){
+    if (!this.SplitModeOn){
+      throw new Error('Activate cannot be calle with split mode turned off.');
+    }
+    this.activeSide = side;
+  }
+
+  turnSplitModeOn(){
+    if (this.SplitModeOn){
+      return;
+    }
+    if (this.ActiveArea === 'a'){
+      this.router.navigate(['', { outlets: { b: ['empty'] } }]);
+    } else {
+      this.router.navigate(['', { outlets: { a: ['empty'] } }]);
+    }
+  }
+
+  turnSplitModeOff(){
+    if (!this.SplitModeOn){
+      return;
+    }
+    if (this.ActiveArea === 'a'){
+      this.router.navigate(['', { outlets: { b: [] } }]);
+    } else {
+      this.router.navigate(['', { outlets: { a: [] } }]);
+    }
+  }
+
   ngOnDestroy() {
     this.destroyed$.next(true);
   }

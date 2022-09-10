@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SplitViewService } from './split-view.service';
+import { SplitViewService } from './split-view/split-view.service';
 
 @Component({
   selector: 'app-root',

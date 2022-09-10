@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
-import { EmptyComponent } from './empty.component';
-import { JobsComponent } from './jobs.component';
-import { NewVacancyComponent } from './new-vacancy.component';
-import { TalentpoolComponent } from './talentpool.component';
+import { DashboardComponent } from './components/dashboard.component';
+import { EmptyComponent } from './components/empty.component';
+import { JobsComponent } from './components/jobs.component';
+import { NewVacancyComponent } from './components/new-vacancy.component';
+import { TalentpoolComponent } from './components/talentpool.component';
 
 const appRoutes: Routes = [
   { path: 'empty', component: EmptyComponent },

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map, Subject, takeUntil } from 'rxjs';
-import { SplitViewArea } from './split-view-area';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
 import { SplitViewService } from './split-view.service';
 
 @Component({
@@ -9,61 +7,15 @@ import { SplitViewService } from './split-view.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'Split-View-Sample';
+  
   private splitViewService: SplitViewService;
-  private router: Router;
-  private destroyed$ = new Subject();
-  private currentRoute = '';
 
-  constructor(splitViewService: SplitViewService, router: Router) {
+  constructor(splitViewService: SplitViewService) {
     this.splitViewService = splitViewService;
-    this.router = router;
   }
 
-  ngOnInit() {
-    // this.router.events
-    //   .pipe(takeUntil(this.destroyed$))
-    //   .subscribe(event => {
-    //     if (event instanceof NavigationEnd) {
-    //       if (event){
-    //         this.currentRoute = event.url ? event.url : '';
-    //         console.log(`currentRoute: ${this.currentRoute}`);
-
-    //         // This logic should not reside here, maybe in SplitViewService.
-    //         // Just put here for simple example...
-    //         if (!this.SplitActive && this.RouteForSplitViewAreaBGiven && this.SplitViewOrderedForward){
-    //           this.changeOrder();
-    //         }
-    //         if (!this.SplitActive && this.RouteForSplitViewAreaAGiven && !this.SplitViewOrderedForward){
-    //           this.changeOrder();
-    //         }
-    //       }
-    //       // console.log('event:');
-    //       // console.log(event);
-    //     }
-    //   });
-  }
-
-  // ngOnDestroy() {
-  //   this.destroyed$.next(null);
-  // }
-
-  // changeOrder() {
-  //   this.splitViewService.orderedForward = !this.splitViewService.orderedForward;
-  // }
-
-  get SplitViewOrderedForward() {
-    return this.splitViewService.OrderedForward;
-  }
-
-  get SplitViewAreaAVisible() {
-    return this.splitViewService.AreaAVisible;
-  }
-
-  get SplitViewAreaBVisible() {
-    return this.splitViewService.AreaBVisible;
-  }
-
-  get SplitViewSplitModeOn() {
-    return this.splitViewService.SplitModeOn;
+  getRouterLinkInputForActiveArea(route: string | any[]){
+    return this.splitViewService.getRouterLinkInputForActiveArea(route);
   }
 }

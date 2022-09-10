@@ -12,6 +12,7 @@ export class SplitViewService {
   private router: Router;
   private destroyed$ = new Subject();
   private currentRoute = '';
+  private activeSide: '' | 'left' | 'right' = '';
 
   constructor(router: Router) {
     this.router = router;
@@ -38,6 +39,18 @@ export class SplitViewService {
         if (!this.SplitModeOn && this.AreaAVisible && !this.orderedForward) {
           this.changeOrder();
         }
+
+
+        // Maintain active side state
+
+        // Clear if set but Split is off
+        if (!this.SplitModeOn && this.activeSide !== ''){
+          this.activeSide = '';
+        
+        // Set to left if not set but Split is on
+        } else if (this.SplitModeOn && this.activeSide == '') {
+          this.activeSide = 'left';
+        }
       });
   }
 
@@ -59,6 +72,65 @@ export class SplitViewService {
 
   get SplitModeOn() {
     return this.AreaAVisible && this.AreaBVisible;
+  }
+
+  get ActiveSide() {
+    return this.activeSide;
+  }
+
+  get ActiveArea(): '' | 'a' | 'b' {
+    if (!this.AreaAVisible && !this.AreaBVisible){
+      return '';
+    }
+    if (this.SplitModeOn){
+      if (this.OrderedForward){
+        if (this.ActiveSide === 'left'){
+          return 'a';
+        } else {
+          return 'b';
+        }
+      } else {
+        if (this.ActiveSide === 'right'){
+          return 'a';
+        } else {
+          return 'b';
+        }
+      }
+    } else {
+      if (this.AreaAVisible){
+        return 'a';
+      } else {
+        return 'b';
+      }
+    }
+  }
+
+  getRouterLinkInputForActiveArea(route: string | any[]){
+    return ['', { outlets: this.getRouterLinkOutlets(route) }];
+  }
+
+  private getRouterLinkOutlets(route: string | any[]){
+    const activeArea = this.ActiveArea;
+    if (activeArea === 'a'){
+      return {
+        a: route
+      };
+    } else if (activeArea === 'b'){
+      return {
+        b: route
+      }
+    }
+    // No split area currently active?
+    // Return left area route.
+    if (this.OrderedForward){
+      return {
+        a: route
+      };
+    } else {
+      return {
+        b: route
+      };
+    }
   }
 
   ngOnDestroy() {

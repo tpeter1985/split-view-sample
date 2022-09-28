@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateAccessRightsComponent } from './components/candidate/candidate-access-rights/candidate-access-rights.component';
 import { CandidateCoreDataComponent } from './components/candidate/candidate-core-data/candidate-core-data.component';
+import { CandidateDocumentComponent } from './components/candidate/candidate-document/candidate-document.component';
 import { CandidateDocumentsComponent } from './components/candidate/candidate-documents/candidate-documents.component';
 import { CandidateComponent } from './components/candidate/candidate/candidate.component';
 import { MyProcessesComponent } from './components/candidate/my-processes/my-processes.component';
@@ -29,6 +30,7 @@ import { SplitViewOutletComponent } from './split-view/split-view-outlet/split-v
     CandidateCoreDataComponent,
     CandidateDocumentsComponent,
     MyProcessesComponent,
+    CandidateDocumentComponent,
   ],
   imports: [
     BrowserModule,

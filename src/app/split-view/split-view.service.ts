@@ -109,11 +109,15 @@ export class SplitViewService {
   }
 
   getRouterLinkInputForActiveArea(route: string | any[]){
-    return ['', { outlets: this.getRouterLinkOutlets(route) }];
+    return ['', { outlets: this.getRouterLinkOutletsForAreaToUse(route) }];
   }
 
-  private getRouterLinkOutlets(route: string | any[]){
-    if (this.getAreaToUse() === 'a'){
+  private getRouterLinkOutletsForAreaToUse(route: string | any[]){
+    return this.getRouterLinkOutletsForArea(route, this.getAreaToUse());
+  }
+
+  getRouterLinkOutletsForArea(route: string | any[], area: 'a' | 'b'){
+    if (area === 'a'){
       return {
         a: route
       };
@@ -187,6 +191,30 @@ export class SplitViewService {
       }
     }
     return false;
+  }
+
+  getAreaByActivatedRoute(activatedRoute: ActivatedRoute): '' | 'a' | 'b' {
+    let route: ActivatedRoute | null = activatedRoute;
+        while (route) {
+            const value = route.outlet;
+            if (route.outlet === 'a' || route.outlet === 'b'){
+              return route.outlet;
+            }
+            route = route.parent;
+        }
+    return '';
+  }
+
+  getOppositeAreaByActivatedRoute(activatedRoute: ActivatedRoute): '' | 'a' | 'b' {
+    const area = this.getAreaByActivatedRoute(activatedRoute);
+    switch(area){
+      case 'a':
+        return 'b';
+      case 'b':
+        return 'a';
+      default:
+        return '';
+    }
   }
 
   ngOnDestroy() {

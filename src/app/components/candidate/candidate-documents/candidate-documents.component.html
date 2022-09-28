@@ -1,3 +1,15 @@
 <ng-container *ngIf="( candidate$ | async ) as candidate">
     {{ candidate.firstName }}'s documents are shown here!
+    <br /><br /><br />
+
+    <div *ngFor="let document of documents$ | async">
+        * 
+        <a [routerLink]="['../document/', document.id]">
+            {{ document.fileName }}
+        </a>
+        &nbsp;
+        <a [routerLink]="getRouterLinkInputForOppositeArea(['new-candidates', 'candidate', {id: candidate.id}, 'document', document.id])">
+            Open in Split
+        </a>
+    </div>
 </ng-container>

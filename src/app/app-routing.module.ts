@@ -11,6 +11,7 @@ import { CandidateCoreDataComponent } from './components/candidate/candidate-cor
 import { CandidateDocumentsComponent } from './components/candidate/candidate-documents/candidate-documents.component';
 import { CandidateAccessRightsComponent } from './components/candidate/candidate-access-rights/candidate-access-rights.component';
 import { MyProcessesComponent } from './components/candidate/my-processes/my-processes.component';
+import { CandidateDocumentComponent } from './components/candidate/candidate-document/candidate-document.component';
 
 const candidateChildRoutes = [
   {
@@ -24,6 +25,10 @@ const candidateChildRoutes = [
   {
     path: 'access-rights',
     component: CandidateAccessRightsComponent,
+  },
+  {
+    path: 'document/:id',
+    component: CandidateDocumentComponent,
   },
 ];
 

@@ -1,7 +1,7 @@
 <div id="navbar">
   <a
     [routerLink]="getRouterLinkInputForActiveArea(['dashboard'])"
-    [class.nav-active]="routerLinkIsActive(['dashboard'])">
+    [class.nav-active]="routerLinkIsActive(['dashboard']) || routerLinkIsActive(['start'])">
     Dashboard
   </a>
   | 
@@ -21,6 +21,18 @@
     [routerLink]="getRouterLinkInputForActiveArea(['new-vacancy'])"
     [class.nav-active]="routerLinkIsActive(['new-vacancy'])">
     New Vacancy
+  </a>
+  | 
+  <a
+    [routerLink]="getRouterLinkInputForActiveArea(['my-processes'])"
+    [class.nav-active]="routerLinkIsActive(['my-processes'])">
+    My Processes
+  </a>
+  | 
+  <a
+    [routerLink]="getRouterLinkInputForActiveArea(['new-candidates'])"
+    [class.nav-active]="routerLinkIsActive(['new-candidates'])">
+    New Candidates
   </a>
 </div>
 

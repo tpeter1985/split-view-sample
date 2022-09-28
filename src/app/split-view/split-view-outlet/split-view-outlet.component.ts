@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SplitViewService } from '../split-view.service';
 
+// Contains the two side-by-side areas and controls their appearance
+// via SplitViewService.
 @Component({
   selector: 'split-view-outlet',
   templateUrl: './split-view-outlet.component.html',

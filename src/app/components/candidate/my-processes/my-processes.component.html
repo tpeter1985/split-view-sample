@@ -1,0 +1,7 @@
+
+<div *ngFor="let candidate of candidates$ | async">
+    * 
+    <a [routerLink]="['candidate', {id: candidate.id}]">
+        {{ candidate.firstName }} {{ candidate.lastName }}
+    </a>
+</div>

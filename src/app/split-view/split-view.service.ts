@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, Subject, takeUntil } from 'rxjs';
 
+// Singleton containing the state and helper methods to control
+// the split-view implementation.
 @Injectable({
   providedIn: 'root',
 })
@@ -29,7 +31,7 @@ export class SplitViewService {
       .subscribe(event => {
         console.log(event);
         // Store current route
-        this.currentRoute = event.url ? event.url : '';
+        this.currentRoute = event.urlAfterRedirects ? event.urlAfterRedirects : '';
 
         // If B is the only active element set reverse order (if not already done).
         if (!this.SplitModeOn && this.AreaBVisible && this.orderedForward) {
@@ -177,8 +179,10 @@ export class SplitViewService {
       if (
         loweredUrl.includes(`(${areaToUse}:${routerLink})`)
         || loweredUrl.includes(`(${areaToUse}:${routerLink}//`)
+        || loweredUrl.includes(`(${areaToUse}:${routerLink}/`)
         || loweredUrl.includes(`//${areaToUse}:${routerLink})`)
-        || loweredUrl.includes(`//${areaToUse}:${routerLink}//`)){
+        || loweredUrl.includes(`//${areaToUse}:${routerLink}//`)
+        || loweredUrl.includes(`//${areaToUse}:${routerLink}/`)){
         return true;
       }
     }

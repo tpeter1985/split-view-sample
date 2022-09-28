@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SplitViewService } from '../split-view.service';
 
+// Provides Hyperlinks in order to control the
+// Split-View state via SplitViewService.
 @Component({
   selector: 'split-view-command-center',
   templateUrl: './split-view-command-center.component.html',

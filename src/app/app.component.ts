@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { SplitViewService } from './split-view/split-view.service';
 
+// Contains the basic app layout showing:
+// * navbar
+// * split-view command center
+// * split-view outlet
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

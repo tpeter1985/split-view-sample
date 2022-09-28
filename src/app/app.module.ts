@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CandidateAccessRightsComponent } from './components/candidate/candidate-access-rights/candidate-access-rights.component';
+import { CandidateCoreDataComponent } from './components/candidate/candidate-core-data/candidate-core-data.component';
+import { CandidateDocumentsComponent } from './components/candidate/candidate-documents/candidate-documents.component';
+import { CandidateComponent } from './components/candidate/candidate/candidate.component';
+import { MyProcessesComponent } from './components/candidate/my-processes/my-processes.component';
+import { NewCandidatesComponent } from './components/candidate/new-candidates/new-candidates.component';
 import { DashboardComponent } from './components/dashboard.component';
 import { EmptyComponent } from './components/empty.component';
 import { JobsComponent } from './components/jobs.component';
@@ -16,7 +22,13 @@ import { SplitViewOutletComponent } from './split-view/split-view-outlet/split-v
     JobsComponent,
     SplitViewCommandCenterComponent,
     SplitViewOutletComponent,
-    EmptyComponent
+    EmptyComponent,
+    NewCandidatesComponent,
+    CandidateComponent,
+    CandidateAccessRightsComponent,
+    CandidateCoreDataComponent,
+    CandidateDocumentsComponent,
+    MyProcessesComponent,
   ],
   imports: [
     BrowserModule,

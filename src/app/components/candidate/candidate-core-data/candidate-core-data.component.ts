@@ -23,7 +23,9 @@ export class CandidateCoreDataComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.candidateId = Number(this.routingExtensionService.getParam('id', this.route));
-        this.candidate$ = this.candidateService.getCandidate(this.candidateId);
+        this.route.params.subscribe(parameter => {
+            this.candidateId = Number(this.routingExtensionService.getParam('id', this.route));
+            this.candidate$ = this.candidateService.getCandidate(this.candidateId);
+        });
     }
 }

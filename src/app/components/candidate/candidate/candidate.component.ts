@@ -25,7 +25,9 @@ export class CandidateComponent implements OnInit {
         ) { }
 
     ngOnInit() {
-        this.candidateId = Number(this.route.snapshot.paramMap.get('id'));
-        this.candidate$ = this.candidateService.getCandidate(this.candidateId);
+        this.route.params.subscribe(parameter => {
+            this.candidateId = Number(parameter['id']);
+            this.candidate$ = this.candidateService.getCandidate(this.candidateId);
+        });
     }
 }
